@@ -41,6 +41,9 @@ export const Number = styled.p`
 
 export const LastInputs = styled.div`
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
 `;
 
@@ -96,4 +99,43 @@ export const Button = styled.button`
   border-radius: 8px;
   height: 53px;
   margin-top: 28px;
+`;
+
+export const NumberError = styled.p`
+  position: relative;
+  left: -85px;
+  color: #ff5050;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 8px;
+`;
+
+export const MonthError = styled.p`
+  position: relative;
+  left: -161px;
+  top: 42px;
+  color: #ff5050;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 12px;
+`;
+
+export const YearError = styled.p`
+  position: relative;
+  left: -150px;
+  top: 42px;
+  color: #ff5050;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 12px;
+`;
+
+export const CvcError = styled.p`
+  position: relative;
+  left: -130px;
+  top: 42px;
+  color: #ff5050;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 8px;
 `;

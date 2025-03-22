@@ -94,3 +94,16 @@ export const CardDate = styled.p`
   letter-spacing: 1.29px;
   text-transform: uppercase;
 `;
+
+export const Date = styled.div`
+  display: flex;
+`;
+
+export const ErrorParag = styled.p`
+  color: #ff5050;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 8px;
+  position: relative;
+  left: -87px;
+`;

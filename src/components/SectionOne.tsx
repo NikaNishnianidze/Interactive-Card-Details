@@ -1,4 +1,5 @@
 import CardCircles from "../../public/card-logo.svg";
+import React from "react";
 import {
   HeaderContainer,
   CardContainer,
@@ -12,14 +13,21 @@ import {
   CardHeading,
   CardName,
   CardDate,
+  Date,
+  ErrorParag,
 } from "../SectionOneStyle";
+import SectionTwo from "./SectionTwo";
 
-export default function SectionOne() {
+interface SectionOneProps {
+  userInfo: Object;
+}
+
+const SectionOne: React.FC<SectionOneProps> = ({ userInfo, error }) => {
   return (
     <>
       <HeaderContainer>
         <BackCardContainer>
-          <BackCardP>000</BackCardP>
+          <BackCardP>{userInfo.cvc || "000"}</BackCardP>
         </BackCardContainer>
 
         <CardContainer>
@@ -28,15 +36,22 @@ export default function SectionOne() {
           </Top>
           <Bottom>
             <CardNumber>
-              <CardHeading>0000 0000 0000 0000</CardHeading>
+              <CardHeading>
+                {userInfo.number || "0000 0000 0000 0000"}
+              </CardHeading>
             </CardNumber>
             <CardInfo>
-              <CardName>JANE APPLESEED</CardName>
-              <CardDate>00/00</CardDate>
+              <CardName>{userInfo.name || "JANE APPLESEED"}</CardName>
+              <Date>
+                <CardDate>{userInfo.month || "00"}/</CardDate>
+                <CardDate>{userInfo.year || "00"}</CardDate>
+              </Date>
             </CardInfo>
           </Bottom>
         </CardContainer>
       </HeaderContainer>
     </>
   );
-}
+};
+
+export default SectionOne;

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   InfoContainer,
   Name,
@@ -11,29 +12,143 @@ import {
   Cvc,
   CvcInput,
   Button,
+  NumberError,
+  MonthError,
+  YearError,
+  CvcError,
 } from "../SectionTwoStyle";
 
-export default function SectionTwo() {
+import { ErrorParag } from "../SectionOneStyle";
+
+interface SectionTwoProps {
+  userInfo: Object;
+  setUserInfo: React.Dispatch<React.SetStateAction<Object>>;
+}
+
+const SectionTwo: React.FC<SectionTwoProps> = ({
+  userInfo,
+  setUserInfo,
+  error,
+  setError,
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+  };
+
+  const checkValidation = (event) => {
+    event.preventDefault();
+    let cardNumber = userInfo.number;
+    let cardName = userInfo.name;
+    let month = userInfo.month;
+    let year = userInfo.year;
+    let cvc = userInfo.cvc;
+    let hasError = false;
+
+    let nameError = "";
+    let numberError = "";
+    let monthError = "";
+    let yearError = "";
+    let cvcError = "";
+
+    if (/[^a-zA-Z ]/.test(cardName)) {
+      nameError = "Name can't contain numbers ";
+      hasError = true;
+    }
+
+    if (/[^0-9]/.test(cardNumber)) {
+      numberError = "Wrong format, numbers only";
+      hasError = true;
+    }
+
+    if (!month) {
+      monthError = "can't be blank";
+      hasError = true;
+    }
+
+    if (!year) {
+      yearError = " can't be blank";
+      hasError = true;
+    }
+
+    if (!cvc) {
+      cvcError = "CVC can't be blank";
+      hasError = true;
+    }
+
+    setError({
+      name: nameError,
+      number: numberError,
+      month: monthError,
+      year: yearError,
+      cvc: cvcError,
+    });
+  };
   return (
     <>
-      <InfoContainer>
+      <InfoContainer onSubmit={checkValidation}>
         <Name>Cardholder Name</Name>
-        <InfoInput placeholder="e.g. Jane Appleseed"></InfoInput>
+        <InfoInput
+          placeholder="e.g. Jane Appleseed"
+          name="name"
+          onChange={handleChange}
+          type="text"
+        ></InfoInput>
+        {error.name && (
+          <ErrorParag style={{ color: "red" }}>{error.name}</ErrorParag>
+        )}
         <Number>Card Number</Number>
-        <InfoInput placeholder="e.g. 1234 5678 9123 0000"></InfoInput>
+        <InfoInput
+          placeholder="e.g. 1234 5678 9123 0000"
+          onChange={handleChange}
+          name="number"
+          type="text"
+          maxLength={16}
+          style={{ border: error.number ? "1px solid #FF5050" : "" }}
+        ></InfoInput>
+        {error.number && (
+          <NumberError style={{ color: "red" }}>{error.number}</NumberError>
+        )}
         <LastInputs>
           <DateDiv>
             <DateInfo>Exp. Date (MM/YY)</DateInfo>
-            <DateInput placeholder="MM"></DateInput>
-            <DateInput placeholder="YY"></DateInput>
+            <DateInput
+              placeholder="MM"
+              onChange={handleChange}
+              name="month"
+              type="text"
+              maxLength={2}
+              style={{ border: error.month ? "1px solid #FF5050" : "" }}
+            ></DateInput>
+            <DateInput
+              placeholder="YY"
+              onChange={handleChange}
+              name="year"
+              type="text"
+              maxLength={2}
+              style={{ border: error.year ? "1px solid #FF5050" : "" }}
+            ></DateInput>
           </DateDiv>
+
           <CvcDiv>
             <Cvc>CVC</Cvc>
-            <CvcInput placeholder="e.g. 123"></CvcInput>
+            <CvcInput
+              placeholder="e.g. 123"
+              onChange={handleChange}
+              name="cvc"
+              type="text"
+              maxLength={3}
+              style={{
+                border: error.cvc ? "1px solid #FF5050" : "",
+                position: "relative",
+                zIndex: 1,
+              }}
+            ></CvcInput>
           </CvcDiv>
         </LastInputs>
-        <Button>Confirm</Button>
+        <Button type="submit">Confirm</Button>
       </InfoContainer>
     </>
   );
-}
+};
+
+export default SectionTwo;
