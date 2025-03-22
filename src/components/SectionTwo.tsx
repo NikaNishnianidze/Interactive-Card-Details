@@ -33,6 +33,15 @@ const SectionTwo: React.FC<SectionTwoProps> = ({
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+    const formattedValue = event.target.value.replace(/\D/g, "");
+  };
+
+  const formatCardNumber = (number: string) => {
+    let formattedValue = number.replace(/\D/g, "");
+
+    formattedValue = formattedValue.replace(/(.{4})(?=.)/g, "$1 ");
+
+    return formattedValue;
   };
 
   const checkValidation = (event) => {
@@ -102,7 +111,8 @@ const SectionTwo: React.FC<SectionTwoProps> = ({
           onChange={handleChange}
           name="number"
           type="text"
-          maxLength={16}
+          maxLength={19}
+          value={formatCardNumber(userInfo.number)}
           style={{ border: error.number ? "1px solid #FF5050" : "" }}
         ></InfoInput>
         {error.number && (
