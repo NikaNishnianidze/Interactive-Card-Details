@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   InfoContainer,
   Name,
@@ -19,6 +19,7 @@ import {
 } from "../SectionTwoStyle";
 
 import { ErrorParag } from "../SectionOneStyle";
+import Complete from "./Complete";
 
 interface SectionTwoProps {
   userInfo: Object;
@@ -31,9 +32,10 @@ const SectionTwo: React.FC<SectionTwoProps> = ({
   error,
   setError,
 }) => {
+  const [isComplete, setIsComplete] = useState(false);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
-    const formattedValue = event.target.value.replace(/\D/g, "");
   };
 
   const formatCardNumber = (number: string) => {
@@ -46,7 +48,7 @@ const SectionTwo: React.FC<SectionTwoProps> = ({
 
   const checkValidation = (event) => {
     event.preventDefault();
-    let cardNumber = userInfo.number;
+    let cardNumber = userInfo.number.replace(/\s/g, "");
     let cardName = userInfo.name;
     let month = userInfo.month;
     let year = userInfo.year;
@@ -91,7 +93,16 @@ const SectionTwo: React.FC<SectionTwoProps> = ({
       year: yearError,
       cvc: cvcError,
     });
+
+    if (!hasError) {
+      setIsComplete(true);
+    }
   };
+
+  if (isComplete) {
+    return <Complete />;
+  }
+
   return (
     <>
       <InfoContainer onSubmit={checkValidation}>
