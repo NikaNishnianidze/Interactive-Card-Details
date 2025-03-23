@@ -6,6 +6,9 @@ export const InfoContainer = styled.form`
   align-items: center;
   padding-bottom: 45px;
   margin-top: 91px;
+  @media screen and (min-width: 1440px) {
+    margin-top: unset;
+  }
 `;
 
 export const Name = styled.p`
@@ -17,6 +20,10 @@ export const Name = styled.p`
   position: relative;
   left: -85px;
   margin-top: 20px;
+
+  @media screen and (min-width: 1440px) {
+    left: -110px;
+  }
 `;
 
 export const InfoInput = styled.input`
@@ -26,6 +33,10 @@ export const InfoInput = styled.input`
   border-radius: 8px;
   padding: 0 0 0 16px;
   margin-top: 9px;
+
+  @media screen and (min-width: 1440px) {
+    width: 381px;
+  }
 `;
 
 export const Number = styled.p`
@@ -37,6 +48,10 @@ export const Number = styled.p`
   margin-top: 20px;
   position: relative;
   left: -106px;
+
+  @media screen and (min-width: 1440px) {
+    left: -130px;
+  }
 `;
 
 export const LastInputs = styled.div`
@@ -55,6 +70,11 @@ export const DateInfo = styled.p`
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  @media screen and (min-width: 1440px) {
+    position: relative;
+    left: 7px;
+  }
 `;
 
 export const DateInput = styled.input`
@@ -65,6 +85,10 @@ export const DateInput = styled.input`
   border: 1px solid #dfdee0;
   border-radius: 8px;
   padding-left: 16px;
+
+  @media screen and (min-width: 1440px) {
+    width: 80px;
+  }
 `;
 
 export const CvcDiv = styled.div``;
@@ -77,6 +101,10 @@ export const Cvc = styled.p`
   text-transform: uppercase;
   position: relative;
   left: 5px;
+
+  @media screen and (min-width: 1440px) {
+    left: 20px;
+  }
 `;
 
 export const CvcInput = styled.input`
@@ -87,6 +115,11 @@ export const CvcInput = styled.input`
   margin-top: 9px;
   margin-left: 3px;
   padding-left: 16px;
+
+  @media screen and (min-width: 1440px) {
+    width: 191px;
+    margin-left: 12px;
+  }
 `;
 
 export const Button = styled.button`
@@ -99,6 +132,11 @@ export const Button = styled.button`
   border-radius: 8px;
   height: 53px;
   margin-top: 28px;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 40px;
+    width: 381px;
+  }
 `;
 
 export const NumberError = styled.p`
@@ -108,6 +146,10 @@ export const NumberError = styled.p`
   font-weight: 500;
   font-size: 12px;
   margin-top: 8px;
+
+  @media screen and (min-width: 1440px) {
+    left: -106px;
+  }
 `;
 
 export const MonthError = styled.p`

@@ -50,4 +50,9 @@ export default App;
 const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 349px;
+  }
 `;

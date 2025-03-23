@@ -16,6 +16,9 @@ body{
     align-items: center;
     min-height: 100vh;
     font-family: "Space Grotesk", sans-serif;
+    @media screen and (min-width: 1440px){
+        align-items: unset
+    }
 }
 `;
 

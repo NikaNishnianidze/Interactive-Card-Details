@@ -13,9 +13,6 @@ import {
   CvcInput,
   Button,
   NumberError,
-  MonthError,
-  YearError,
-  CvcError,
 } from "../SectionTwoStyle";
 
 import { ErrorParag } from "../SectionOneStyle";

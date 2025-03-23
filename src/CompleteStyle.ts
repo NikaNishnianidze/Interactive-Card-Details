@@ -11,6 +11,9 @@ export const ThankImage = styled.img`
   width: 80px;
   height: 80px;
   margin-top: 91px;
+  @media screen and (min-width: 1440px) {
+    margin-top: unset;
+  }
 `;
 
 export const ThankP = styled.p`
@@ -42,4 +45,8 @@ export const ContinueButton = styled.button`
   color: #fff;
   font-weight: 500;
   font-size: 18px;
+
+  @media screen and (min-width: 1440px) {
+    width: 381px;
+  }
 `;
